@@ -61,15 +61,16 @@ def get_bin_table(threshold = 230):
 
 def test_image(im_name='checkcode.png'):
     image = Image.open(im_name)
+    print(pytesseract.image_to_string(image))
     imgry = image.convert('L')  # 转化为灰度图
     table = get_bin_table()
     out = imgry.point(table, '1')
-    out.show()
-    code = pytesseract.image_to_string(out,config='digits')
+    #out.show()
+    code = pytesseract.image_to_string(out)
     print('code---')
     print(code)
     print('---code')
 
 
 if __name__ == '__main__':
-    test_image('123.png')
+    test_image()
